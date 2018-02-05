@@ -275,14 +275,27 @@ buildvariants:
   - name: build
   - name: test
 
-- name: rhel72-s390x-enterprise
-  display_name: ZAP s390x RHEL 7.2 Enterprise
+- name: rhel72-s390x-enterprise-go1.8
+  display_name: ZAP s390x RHEL 7.2 Enterprise (Go 1.8)
   run_on:
   - rhel72-zseries-test
   stepback: false
   batchtime: 604800
   expansions:
-    gorootvars: PATH="/opt/mongodbtoolchain/v2/bin/:$PATH"
+    gorootvars: 'PATH="/opt/go1.8/go/bin:/opt/mongodbtoolchain/v2/bin/:$PATH" GOROOT=/opt/go1.8/go CC=/opt/mongodbtoolchain/v2/bin/s390x-mongodb-linux-gcc'
+    build_tags: ""
+  tasks:
+  - name: build
+  - name: test
+
+- name: rhel72-s390x-enterprise-go1.7
+  display_name: ZAP s390x RHEL 7.2 Enterprise (Go 1.7)
+  run_on:
+  - rhel72-zseries-test
+  stepback: false
+  batchtime: 604800
+  expansions:
+    gorootvars: 'PATH="/opt/go1.7/go/bin:/opt/mongodbtoolchain/v2/bin/:$PATH" GOROOT=/opt/go1.7/go CC=/opt/mongodbtoolchain/v2/bin/s390x-mongodb-linux-gcc'
     build_tags: ""
   tasks:
   - name: build
