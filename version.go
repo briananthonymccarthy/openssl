@@ -23,3 +23,5 @@ import "C"
 const BuildVersion string = C.OPENSSL_VERSION_TEXT
 
 var Version string = C.GoString(C.SSLeay_version(C.SSLEAY_VERSION))
+
+var VersionNumber uint32 = uint32(C.SSLeay())
