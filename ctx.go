@@ -100,6 +100,12 @@ func NewCtxWithVersion(version SSLVersion) (*Ctx, error) {
 	switch version {
 	case SSLv3:
 		method = C.X_SSLv3_method()
+	case TLSv1:
+		method = C.X_TLSv1_method()
+	case TLSv1_1:
+		method = C.X_TLSv1_1_method()
+	case TLSv1_2:
+		method = C.X_TLSv1_2_method()
 	case AnyVersion:
 		method = C.X_SSLv23_method()
 	}
